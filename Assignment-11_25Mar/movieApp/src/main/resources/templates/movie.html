@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Movies</title>
+</head>
+
+<body style="font-family:Arial; margin:40px;">
+
+    <h2>Add Movie</h2>
+
+    <form action="addMovie" method="post">
+        <input type="text" name="name" placeholder="Movie Name" required />
+        <input type="number" step="0.1" name="rating" placeholder="Rating" required />
+
+        <select name="genre" required>
+            <option value="">--Select Genre--</option>
+            <option value="Drama">Drama</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Satire">Satire</option>
+        </select>
+
+        <button type="submit">Add</button>
+    </form>
+
+    <hr>
+
+    <h2>Movie List</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Genre</th>
+        </tr>
+
+        <tr th:each="m : ${movies}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.name}"></td>
+            <td th:text="${m.rating}"></td>
+            <td th:text="${m.genre}"></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
